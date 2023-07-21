@@ -17,7 +17,7 @@ def dl_file(furl, fn=None):
 		
 		if fn == None:
 			#There wasn't a filename specified, so let's figure out what to name it
-			#To do that, let's take the URL, split it at / and get the string after the last slash
+			#To do that, let's take the URL, split it at / and get the string after the last slash using the index -1
 			fn = furl.split('/')[-1]
 			urllib.request.urlretrieve(furl, fn)
 			return fn
@@ -77,8 +77,8 @@ def find_file(fname, path='/'):
 	in question, returning the first result.
 	"""	
 	for root, dirs, files in os.walk(path):
-	if name in files:
-	    return os.path.join(root, name)
+	    if fname in files:
+	        return os.path.join(root, fname)
 
 
 
